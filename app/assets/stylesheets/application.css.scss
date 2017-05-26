@@ -16,31 +16,36 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
 }
 
-.navbar {
+.navbar, .home-callout {
   //Gradient provided by @_ighosh at uiGradients.com
   background: #00c6ff; /* fallback for old browsers */
-}
-
-.navbar {
   border: none;
 }
 
-.navbar-default .navbar-brand {
-  color: white;
-}
+.navbar-default .navbar-brand,
 .navbar-default .navbar-nav > li > a {
   color: white;
+  &:hover {
+    color: white;
+    opacity: 0.75;
+  }
 }
-.navbar-default .navbar-brand:hover {
+
+.home-callout {
+  margin-top: -20px;
+  padding-top: 50px;
+  padding-bottom: 100px;
   color: white;
-  opacity: 0.75;
 }
-.navbar-default .navbar-nav > li > a:hover {
-  color: white;
-  opacity: 0.75;
+
+.listing {
+  list-style: none;
+  padding-left: 0;
 }

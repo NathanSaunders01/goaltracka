@@ -30,6 +30,12 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Twitter Bootstrap library for front-end UI and layout
 gem 'bootstrap-sass', '3.3.7'
+# Use Hirb for console and database layout
+gem 'hirb'
+# Use devise gem for user authentication and login
+gem 'devise'
+# Use font awesome for icons
+gem 'font-awesome-sass', '~> 4.7.0'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
