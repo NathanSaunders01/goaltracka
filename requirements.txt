@@ -1,0 +1,6 @@
+XP Calc
+
+* Take goal ID for form
+* Take user input as form_tag but don't store
+* Post to Goals Controller and add condition to multiply input with goal xp value
+* Store new value in total_goal_xp

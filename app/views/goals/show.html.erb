@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="well score-well">
+        <h3 class="text-center">Scoreboard</h3>
+        <hr>
+        <p>Total XP: <%= @goal.total_goal_xp %>xp</p>
+        <p>Total Count: 0 </p>
+        <p>Daily Average: 350xp</p>
+        <p>Highest Daily Score: 600xp</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h1 class="text-center"><%= @goal.name %></h1>
+      <hr>
+        <h4 class="text-center">Don't forget! - <%= @goal.description %></h4>
+    </div>
+  </div>
+</div>

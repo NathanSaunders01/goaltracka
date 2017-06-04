@@ -10,14 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525160107) do
+ActiveRecord::Schema.define(version: 20170604132414) do
+
+  create_table "experiences", force: :cascade do |t|
+    t.integer "total_xp"
+    t.integer "user_id"
+  end
 
   create_table "goals", force: :cascade do |t|
     t.string   "name"
     t.integer  "xp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id"
+    t.integer  "total_goal_xp", default: 0
+    t.string   "description"
   end
 
   create_table "models", force: :cascade do |t|

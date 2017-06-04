@@ -21,9 +21,17 @@ class GoalsController < ApplicationController
   end
   
   def update
+    if @goal.update(goal_params)
+      flash[:success] = "Goal was successfully updated"
+      redirect_to goal_path(@goal)
+    else
+      flash[:danger] = Goal.errors.full_message.join(" ,")
+      render 'edit'
+    end
   end
   
   def show
+    
   end
   
   def index
@@ -31,9 +39,15 @@ class GoalsController < ApplicationController
     @user_goals = @user.goals
   end
   
+  def destroy
+    @goal.destroy
+    flash[:danger] = "Goal was successfully deleted"
+    redirect_to goals_path
+  end
+
   private
   def goal_params
-    params.require(:goal).permit(:name, :xp)
+    params.require(:goal).permit(:name, :xp, :total_goal_xp, :description)
   end
   
   def set_goal
