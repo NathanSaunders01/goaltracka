@@ -31,7 +31,8 @@ class GoalsController < ApplicationController
   end
   
   def show
-    
+    @total_goal_xp = @goal.total_goal_xp
+    @goal_activities = @goal.activities.all.reverse
   end
   
   def index

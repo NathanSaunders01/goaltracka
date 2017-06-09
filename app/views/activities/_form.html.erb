@@ -1,0 +1,8 @@
+  <div class="field form-group">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, class:"form-control" %>
+  </div>
+
+  <div class="actions form-group">
+    <%= f.submit(@activity.new_record? ? "Log Activity" : "Edit Activity", class: 'btn btn-primary') %>
+  </div>

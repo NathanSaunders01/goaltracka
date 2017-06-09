@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="text-center">Edit Activity for <%= @goal.name %></h1>
+      <div class="well">
+        <%= form_for @activity, :url => { :action => "update" } do |form| %>
+        <%= render partial: 'form', locals: { f: form } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

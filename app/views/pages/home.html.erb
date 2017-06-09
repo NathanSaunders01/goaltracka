@@ -1,1 +1,5 @@
 <h1 class="text-center home-callout">Homepage</h1>
+
+<% if user_signed_in? %>
+<%= current_user.total_user_xp %>
+<% end %>

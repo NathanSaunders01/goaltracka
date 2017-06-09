@@ -25,7 +25,7 @@ h1, h2, h3 {
 
 .navbar, .home-callout {
   //Gradient provided by @_ighosh at uiGradients.com
-  background: #00c6ff; /* fallback for old browsers */
+  background: 	#FFDF00; /* fallback for old browsers */
   border: none;
 }
 
@@ -33,6 +33,10 @@ h1, h2, h3 {
 .navbar-default .navbar-nav > li > a {
   color: white;
   &:hover {
+    color: white;
+    opacity: 0.75;
+  }
+  &:focus {
     color: white;
     opacity: 0.75;
   }
@@ -53,4 +57,54 @@ h1, h2, h3 {
 .score-well {
   padding-top: 10px;
   margin-top: 100px;
+}
+
+.bg-white {
+  background-color: #f9ed9a;
+}
+
+
+.fa-plus {
+  border: none;
+  float: right;
+  margin-top: -60px;
+  padding-top: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  &:hover {
+    border: 2px solid #eaeaea;
+    border-radius: 4px;  
+  }
+}
+
+.well-activity {
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-bottom: 5px;
+  padding-top: 15px;
+}
+
+.recent-activity {
+  margin-top: 30px;
+}
+
+.activity-actions {
+  float: right;
+  margin-top: -25px;
+  margin-right: -5px;
+  .btn-default {
+    &:hover {
+    background-color: red;
+  }
+  }
+}
+
+.goal-title {
+  &:hover {
+    background-color:rgba(0,0,0,0.1);
+  }
+}
+
+.flash-notice {
+  display: none;
 }
