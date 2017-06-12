@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609060509) do
+ActiveRecord::Schema.define(version: 20170612143030) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "quantity"
@@ -23,9 +23,11 @@ ActiveRecord::Schema.define(version: 20170609060509) do
   end
 
   create_table "goal_activities", force: :cascade do |t|
-    t.integer "goal_id"
-    t.integer "activity_id"
-    t.integer "total_xp"
+    t.integer  "goal_id"
+    t.integer  "activity_id"
+    t.integer  "total_xp"
+    t.integer  "user_id"
+    t.datetime "created_at"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -34,8 +36,9 @@ ActiveRecord::Schema.define(version: 20170609060509) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "user_id"
-    t.integer  "total_goal_xp", default: 0
     t.string   "description"
+    t.integer  "goal_xp"
+    t.integer  "total_goal_xp", default: 0
   end
 
   create_table "users", force: :cascade do |t|

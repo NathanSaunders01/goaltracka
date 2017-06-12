@@ -1,5 +1,7 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def new
     @goal = Goal.new
@@ -56,7 +58,7 @@ class GoalsController < ApplicationController
   end
   
   def require_same_user
-    if @goal.user != current_user or !current_user.admin?
+    if @goal.user != current_user
       flash[:danger] = "You can only view your own goals"
       redirect_to root_path
     end

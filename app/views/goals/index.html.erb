@@ -3,14 +3,15 @@
   <hr>
   </br>
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-8 col-md-offset-2">
       <% if current_user.goals.count > 0 %>
         <table class="table table-striped">
           <thead>
             <th><stong>Goal</stong></th>
             <th><stong>XP</stong></th>
             <th><stong>Total XP</stong></th>
-            <th><stong>Action</stong></th>
+            <th><stong>XP Today</stong></th>
+            <th><stong>Actions</stong></th>
           </thead>
           <tbody>
             <% @user_goals.each do |goal| %>
@@ -18,6 +19,7 @@
               <td><%= link_to goal.name, goal_path(goal), class: "goal-title" %></td>
               <td><%= goal.xp %></td>
               <td><%= goal.total_goal_xp %></td>
+              <td><%= goal.xp_today %></td>
               <td>
                 <%= link_to edit_goal_path(goal), class: "btn btn-xs btn-default" do %>
                   <i class="fa fa-edit"></i>
@@ -30,11 +32,12 @@
             <% end %>
           </tbody>
         </table>
+        <%= link_to "Create new goal", new_goal_path, class:"btn btn-primary btn-md" %>
       <% else %>
         <h4 class="text-center">You have no goals yet!</h4>
         </br>
         <div class="text-center">
-          <%= link_to "Create your first goal", new_goal_path, class:"btn btn-success btn-lg" %>
+          <%= link_to "Create your first goal", new_goal_path, class:"btn btn-primary btn-lg" %>
         </div>
       <% end %>
     </div>

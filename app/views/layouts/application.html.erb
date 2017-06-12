@@ -9,12 +9,15 @@
   </head>
   
   <%= render 'layouts/navigation' %>
-  <%= render 'layouts/messages' %>  
   
   <body>
-    <div class="">
-      <%= yield %>
+    <div class="flash-container text-center col-xs-6 col-xs-offset-3">
+      <% flash.each do |type, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-#{type}"  %>
+      <% end %>
+    </div>
+    <div style="margin-top: 70px;">
+    <%= yield %>
     </div>
   </body>
-  
 </html>

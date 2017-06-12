@@ -1,5 +1,39 @@
-<h1 class="text-center home-callout">Homepage</h1>
-
+<div class="home-callout text-center container-fluid" style="margin-top: -70px;">
+  <% if user_signed_in? %>
+    <h1>Welcome back to GoalTracka, <%= "#{current_user.email}" %></h1>
+    <h3>"Just do it" - Shia LaBeouf </h3>
+  <% else %>
+    <h1>Welcome to GoalTracka</h1>
+    <h3>"Just do it" - Shia LaBeouf </h3>
+  <% end %>
+</div>
+</br>
 <% if user_signed_in? %>
-<%= current_user.total_user_xp %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="well">
+          <h2 class="text-center">View Your Profile</h2>
+          <%= link_to "View Profile", user_path(id: current_user.id), class: 'btn btn-default btn-lg btn-block' %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="well">
+          <h2 class="text-center">View Your Goals</h2>
+          <%= link_to "View Goals", goals_path, class: 'btn btn-default btn-lg btn-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+          <h2 class="text-center">Click here to sign up!</h2>
+          <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

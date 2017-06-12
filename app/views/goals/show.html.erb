@@ -4,28 +4,39 @@
       <div class="well score-well">
         <h3 class="text-center">Scoreboard</h3>
         <hr>
-        <p>Total XP: <%= @total_goal_xp %>xp</p>
-        <p>Total Count: <%= @goal.goal_activities.count %></p>
-        <p>Daily Average: 350xp</p>
-        <p>Highest Daily Score: 600xp</p>
+        <p>XP per set: <%= @goal.xp %>xp</p>
+        <p>Level: <%= goal_level %></p>
+        <p>Total XP: <%= @goal.total_goal_xp %>xp</p>
+        <p>Total Count: <%= @goal.activities.sum(:quantity) %></p>
+        <p>XP Today: <%= @goal.xp_today %></p>
+        <p>Highest Daily Score: N/A</p>
       </div>
     </div>
-    <div class="col-md-6">
-      <h1 class="text-center"><%= @goal.name %></h1>
-      <% if @goal_activities.count > 0 %>
-        <%= link_to new_goal_activity_path(@goal) do %>
-          <h1><i class="fa fa-plus"></i></h1>
-        <% end %>
-      <% end %>
+    <div class="col-md-6 goal-menu">
+      <div class="navbarnavbar-default navbar-static-top" role="navigation">
+        <div class="collapse navbar-collapse dropdown" id="main-nav-collapse">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <h1 class="text-center"><%= @goal.name.titleize %></h1><span class="caret" style="float: right; margin-top: -20px;"></span>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= link_to "New Activity", new_goal_activity_path(@goal) %></li>
+              <li><%= link_to "Edit Goal", edit_goal_path(@goal) %></li>
+              <li><%= link_to "Delete Goal", goal_path, method: :delete, data: {confirm: "Are you sure you want to delete the goal?"} %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "New Goal", new_goal_path %></li>
+            </ul>
+          </a>
+        </div>
+      </div>
       <hr>
-      <h4 class="text-center">Don't forget! - <%= @goal.description %></h4>
+      <h4 class="text-center">Never forget! - <%= @goal.description %></h4>
+      <h4 class="text-center"><%= goal_level_set_difference %></h4>
       <div class="recent-activity">
         <h4>Recent Activity</h4>
         <hr>
         <% if @goal_activities.count > 0 %>
           <% @goal_activities.each do |activity| %>
             <div class="well well-activity <%= cycle(" ", "bg-white")%>">
-              <p class="text-center">You completed <%= activity.quantity %> sets of <%= (activity.goal.name).downcase %> - <strong><%= activity.quantity*activity.goal.xp %>xp</strong></p>
+              <p class="text-center">You completed <%= pluralize(activity.quantity, "set") %> of <%= (activity.goal.name).downcase %> - <strong><%= activity.quantity*activity.goal.xp %>xp</strong></p>
               <div class="text-center">
                 <small><%= time_ago_in_words(activity.created_at) %> ago </small>
               </div>
@@ -41,9 +52,23 @@
           <div class="text-center">
             <p>You have no activities recorded yet! Log your first one by click on the button blelow</p>
             <br>
-            <%= link_to "Log new Activity", new_goal_activity_path(@goal), class:"btn btn-default btn-md" %>
+            <%= link_to "Log Activity", new_goal_activity_path(@goal), class:"btn btn-default btn-md" %>
           </div>
         <% end %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text-center well score-well">
+        <h3>Actions</h3>
+        <hr>
+        <%= link_to "New Activity", new_goal_activity_path(@goal), class:"btn btn-success btn-sm btn-goal" %>
+        </br>
+        <%= link_to "New Goal", new_goal_path, class:"btn btn-primary btn-sm btn-goal" %>
+        </br>
+        <%= link_to "Edit Goal", edit_goal_path(@goal), class:"btn btn-default btn-sm btn-goal" %>
+        </br>
+        <%= link_to "Delete Goal", goal_path, method: :delete, data: {confirm: "Are you sure you want to delete the goal?"}, class:"btn btn-danger btn-sm btn-goal" %>
+        </br>
       </div>
     </div>
   </div>

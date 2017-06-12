@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.goal = Goal.find(params[:goal_id])
     if @activity.save
-      flash[:success] = "You just scored #{@activity.quantity*@activity.goal.xp}xp!"
+      flash[:success] = "You just gained #{@activity.quantity*@activity.goal.xp}xp!"
       redirect_to goal_path(@activity.goal)
     else
       redirect_to new_goal_activity_path(@goal)
