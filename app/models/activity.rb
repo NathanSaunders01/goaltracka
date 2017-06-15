@@ -1,6 +1,7 @@
 class Activity < ActiveRecord::Base
   has_many :goal_activities, dependent: :destroy
   belongs_to :goal
+  belongs_to :user
   
   after_create :set_total_xp
   after_destroy :reset_total_xp

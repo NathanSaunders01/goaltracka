@@ -1,45 +1,62 @@
 <div class="container">
-  <h1 class="text-center">Goal Sheet</h1>
-  <hr>
-  </br>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <% if current_user.goals.count > 0 %>
-        <table class="table table-striped">
-          <thead>
-            <th><stong>Goal</stong></th>
-            <th><stong>XP</stong></th>
-            <th><stong>Total XP</stong></th>
-            <th><stong>XP Today</stong></th>
-            <th><stong>Actions</stong></th>
-          </thead>
-          <tbody>
-            <% @user_goals.each do |goal| %>
-            <tr>
-              <td><%= link_to goal.name, goal_path(goal), class: "goal-title" %></td>
-              <td><%= goal.xp %></td>
-              <td><%= goal.total_goal_xp %></td>
-              <td><%= goal.xp_today %></td>
-              <td>
-                <%= link_to edit_goal_path(goal), class: "btn btn-xs btn-default" do %>
-                  <i class="fa fa-edit"></i>
-                <% end %>
-                <%= link_to goal_path(goal), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" do %>
-                  <i class="fa fa-trash-o"></i>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= link_to "Create new goal", new_goal_path, class:"btn btn-primary btn-md" %>
-      <% else %>
-        <h4 class="text-center">You have no goals yet!</h4>
-        </br>
-        <div class="text-center">
-          <%= link_to "Create your first goal", new_goal_path, class:"btn btn-primary btn-lg" %>
-        </div>
-      <% end %>
+  <!--<div> <!---Dashboard Graphs--->
+  <!--  <h1 class="text-center">Dashboard</h1>-->
+  <!--  <hr>-->
+  <!--  </br>-->
+  <!--  <div class="row">-->
+  <!--    <div class="col-md-8 col-md-offset-2">-->
+  <!--      <div class="col-md-6">-->
+  <!--        <h4 class="text-center">Daily Breakdown</h4>-->
+  <!--        <div class="well">-->
+  <!--          <%#= pie_chart @user_goals.group(:name).count %>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
+  <div> <!--Goal Sheet-->
+    <h1 class="text-center">Goal Sheet</h1>
+    <hr>
+    </br>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <% if current_user.goals.count > 0 %>
+          <table class="table table-striped">
+            <thead>
+              <th><stong>Goal</stong></th>
+              <th><stong>XP</stong></th>
+              <th><stong>Total XP</stong></th>
+              <th><stong>XP Today</stong></th>
+              <th><stong>Actions</stong></th>
+            </thead>
+            <tbody>
+              <% @user_goals.each do |goal| %>
+              <tr>
+                <td><%= link_to goal.name, goal_path(goal), class: "goal-title" %></td>
+                <td><%= goal.xp %></td>
+                <td><%= goal.total_goal_xp %></td>
+                <td><%= goal.xp_today %></td>
+                <td>
+                  <%= link_to edit_goal_path(goal), class: "btn btn-xs btn-default" do %>
+                    <i class="fa fa-edit"></i>
+                  <% end %>
+                  <%= link_to goal_path(goal), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" do %>
+                    <i class="fa fa-trash-o"></i>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= link_to "Create new goal", new_goal_path, class:"btn btn-primary btn-md" %>
+        <% else %>
+          <h4 class="text-center">You have no goals yet!</h4>
+          </br>
+          <div class="text-center">
+            <%= link_to "Create your first goal", new_goal_path, class:"btn btn-primary btn-lg" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

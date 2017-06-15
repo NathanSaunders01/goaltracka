@@ -5,10 +5,15 @@ class Goal < ActiveRecord::Base
   
   after_destroy :reset_total_user_xp
   after_commit :reset_goal_xp, on: :update
-  after_commit :xp_today
   
   def xp_today
     self.goal_activities.where("created_at >= ?", Time.zone.now.beginning_of_day).sum(:total_xp)
+  end
+  
+  def self.completed_goal_today
+    goals = []
+    Goal.all.each { |goal| goals << goal if (goal.xp_today >=1) }
+    return goals
   end
   
   private

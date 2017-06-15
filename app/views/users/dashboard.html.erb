@@ -1,0 +1,2 @@
+<h1 class="text-center"><%= current_user.email %></h1>
+<%= pie_chart @goals_today.group(:name).sum(:total_goal_xp) %>

@@ -34,6 +34,7 @@ class GoalsController < ApplicationController
   
   def show
     @total_goal_xp = @goal.total_goal_xp
+    @activities = @goal.goal_activities
     @goal_activities = @goal.activities.all.reverse
   end
   
@@ -46,6 +47,11 @@ class GoalsController < ApplicationController
     @goal.destroy
     flash[:danger] = "Goal was successfully deleted"
     redirect_to goals_path
+  end
+  
+  def dashboard
+    @goals = current_user.goals
+    @goals_today = Goal.completed_goal_today
   end
 
   private

@@ -29,6 +29,13 @@ h1, h2, h3 {
   border: none;
 }
 
+.home-callout {
+  background-image: asset-url('trophy.png');
+  background-repeat:no-repeat;
+  background-size: 250px 200px;
+  background-position: 50% 20%; 
+}
+
 .goal-menu {
   background: none !important;
 }
@@ -38,11 +45,11 @@ h1, h2, h3 {
   color: white;
   &:hover {
     color: white;
-    opacity: 0.75;
+    opacity: 0.5;
   }
   &:focus {
     color: white;
-    opacity: 0.75;
+    opacity: 0.5;
   }
 }
 
@@ -60,7 +67,7 @@ h1, h2, h3 {
 
 .score-well {
   padding-top: 10px;
-  margin-top: 100px;
+  margin-top: 65px;
 }
 
 .bg-white {
@@ -82,14 +89,17 @@ h1, h2, h3 {
 }
 
 .well-activity {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
   padding-bottom: 5px;
   padding-top: 15px;
 }
 
 .recent-activity {
   margin-top: 30px;
+  .recent-activity-header {
+    margin-bottom: 20px;
+  }
 }
 
 .activity-actions {
@@ -119,4 +129,17 @@ h1, h2, h3 {
   margin-left: -20px;
   margin-right: -20px;
   opacity: 0.75;
+}
+
+.chart-well {
+  background: rgba(255,223,0, 0.75);
+}
+
+.log-activity {
+  margin-top: 50px;
+}
+
+.hr-activity-bar {
+  margin-top: 20px;
+  margin-bottom: -10px;
 }

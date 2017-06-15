@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   
   get 'about', to: 'pages#about'
   
+  
   resources :users
+  
+  get 'dashboard', to: 'users#dashboard'
   
   resources :goals do
     resources :activities

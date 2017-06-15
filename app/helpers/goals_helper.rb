@@ -30,4 +30,20 @@ module GoalsHelper
       "Only #{pluralize(((@goal.xp*5-@goal.total_goal_xp)/@goal.xp), "set")} to level up!".html_safe
     end
   end
+  
+  def goal_chart_range
+    if @goal.total_goal_xp >= (@goal.xp*200)
+      "#{@goal.xp*500}".html_safe
+    elsif  @goal.total_goal_xp >= (@goal.xp*100)
+      "#{@goal.xp*200}".html_safe
+    elsif @goal.total_goal_xp >= (@goal.xp*50)
+      "#{@goal.xp*100}".html_safe
+    elsif @goal.total_goal_xp >= (@goal.xp*25)
+      "#{@goal.xp*50}".html_safe
+    elsif @goal.total_goal_xp >= (@goal.xp*5)
+      "#{@goal.xp*25}".html_safe
+    else
+      "#{@goal.xp*5}".html_safe
+    end
+  end
 end

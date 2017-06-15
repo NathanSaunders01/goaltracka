@@ -36,6 +36,10 @@ gem 'hirb'
 gem 'devise'
 # Use font awesome for icons
 gem 'font-awesome-sass', '~> 4.7.0'
+# Use ChartKick for data visualization
+gem 'chartkick'
+# Use GroupDate to group together data
+gem 'groupdate'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

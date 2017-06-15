@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://www.google.com/jsapi" %>
   </head>
   
   <%= render 'layouts/navigation' %>
@@ -16,7 +17,7 @@
         <%= content_tag :div, msg, class: "alert alert-#{type}"  %>
       <% end %>
     </div>
-    <div style="margin-top: 70px;">
+    <div style="margin-top: 70px; margin-bottom: 30px;">
     <%= yield %>
     </div>
   </body>

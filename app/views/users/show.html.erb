@@ -1,0 +1,9 @@
+
+<% @activities.each do |activity| %>
+  <div class="well well-activity <%= cycle(" ", "bg-white")%>">
+    <p class="text-center">You completed <%= pluralize(activity.quantity, "set") %> of <%= link_to activity.goal.name, goal_path(activity.goal) %> </p>
+    <div class="text-center">
+      <small><%= time_ago_in_words(activity.created_at) %> ago </small>
+    </div>
+  </div>
+<% end %>
