@@ -10,8 +10,8 @@ class GoalActivity < ActiveRecord::Base
   #   goal_activities.group_by { |g| g.created_at.to_date }
   # end
   
-  def xp_today
-    goal = Goal.find_by_id(goal_id)
-    goal.goal_activities.where("DAY(created_at) = ?", DateTime.now.day).sum(:total_xp)
-  end
+  # def xp_today
+  #   goal = Goal.find_by_id(goal_id)
+  #   goal.goal_activities.where("DAY(created_at) = ?", DateTime.now.day).sum(:total_xp)
+  # end
 end

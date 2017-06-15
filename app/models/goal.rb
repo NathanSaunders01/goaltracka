@@ -10,12 +10,6 @@ class Goal < ActiveRecord::Base
     self.goal_activities.where("created_at >= ?", Time.zone.now.beginning_of_day).sum(:total_xp)
   end
   
-  def self.completed_goal_today
-    goals = []
-    Goal.all.each { |goal| goals << goal if (goal.xp_today >=1) }
-    return goals
-  end
-  
   private
   
   def reset_total_user_xp
