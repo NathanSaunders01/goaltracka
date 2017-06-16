@@ -4,7 +4,16 @@
       <h1 class="text-center">Log Activity for "<%= @goal.name %>"</h1>
       </br>
       <div class="well">
-        
+        <%= form_for(@activity, url: goal_activities_path(@goal), :html => {role: "form"}) do |f| %>
+          <div class="field form-group">
+            <%= f.label :quantity %>
+            <%= f.number_field :quantity, class:"form-control" %>
+          </div>
+          
+          <div class="actions form-group">
+            <%= f.submit "Log Activity", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

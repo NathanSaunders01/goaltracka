@@ -12,6 +12,9 @@
         <p>XP Today: <%= @goal.xp_today %></p>
         <p>Highest Daily Score: N/A</p>
       </div>
+      <div class="text-center back-goals-button">
+        <%= link_to "< Back to Goals", goals_path, class: "btn btn-md btn-default" %>
+      </div>
     </div>
     <div class="col-md-6 goal-menu">
       <div class="navbarnavbar-default navbar-static-top" role="navigation">
@@ -32,9 +35,9 @@
       <h4 class="text-center">"<%= @goal.description %>" - <%= @goal.user.email %></h4>
       <p class="text-center"><%= goal_level_set_difference %></p>
       <hr>
-      <h4>Monthly Progress</h4>
+      <h4>Weekly Progress</h4>
       </br>
-      <div class="well chart-well"><%= line_chart @activities.group_by_day(:created_at, last: 30).sum(:total_xp), library: { hAxis: { format: 'dd/MM' }, vAxis: { viewWindow: {min: 0, max: (@goal.xp*100) } }, pointSize: 4 } %></div>
+      <div class="well chart-well"><%= line_chart @activities.group_by_day(:created_at, last: 7).sum(:total_xp), library: { hAxis: { format: 'dd/MM' }, vAxis: { viewWindow: {min: 0, max: (@goal.xp*25) } }, pointSize: 4 } %></div>
     </div>
     <div class="col-md-3">
       <a data-toggle="collapse" data-parent="#accordian" href="#collapseOne">
@@ -59,7 +62,7 @@
                 <%= link_to goal_activity_path(goal_id: activity.goal_id, id: activity.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-default" do %>
                   <i class="fa fa-trash-o"></i>
                 <% end %>
-                </div>
+              </div>
             </div>
           <% end %>
         <% else %>

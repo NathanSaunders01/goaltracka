@@ -11,6 +11,7 @@
 <% if user_signed_in? %>
   <div class="container">
     <div class="row">
+      <div class="well chart-well"><%= line_chart @activities.group_by_day(:created_at, last: 7).sum(:quantity), library: { hAxis: { format: 'dd/MM' }, vAxis: { viewWindow: {min: 0, max: 250 } }, pointSize: 4 } %></div>
       <div class="col-md-6">
         <div class="well">
           <h2 class="text-center">View Your Profile</h2>

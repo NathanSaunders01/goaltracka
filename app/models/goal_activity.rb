@@ -1,6 +1,6 @@
 class GoalActivity < ActiveRecord::Base
   belongs_to :goal
-  belongs_to :activity
+  belongs_to :activity, dependent: :destroy
   belongs_to :user
   
   # def self.total_grouped_by_day(start)
